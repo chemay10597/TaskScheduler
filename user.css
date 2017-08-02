@@ -1,0 +1,50 @@
+<style>
+body {
+    position: relative;
+}
+.header
+{
+	color: #fff;
+  position: fixed;
+  top: 0;
+  width: 80%;
+  background: #DAE3EE;
+	padding: 1em 1.25em;
+}
+h1 {
+  text-align: center;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+}
+
+ul.nav-pills {
+    top: 155px;
+    position: fixed;
+}
+div.col-sm-9 div {
+    height: 280px;
+    font-size: 20px;
+    margin-top: 160px;
+}
+#section1 {
+  color: #fff;
+  background-color: #1E88E5;4
+}
+#section2 {color: #fff; background-color: #673ab7;}
+#section3 {color: #fff; background-color: #ff9800;}
+#section41 {color: #fff; background-color: #00bcd4;}
+#section42 {color: #fff; background-color: #009688;}
+
+@media screen and (max-width: 710px) {
+  #section1, #section2, #section3, #section41, #section42  {
+      margin-left: 100px;
+  }
+}
+</style>
