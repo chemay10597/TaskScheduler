@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Sample Web</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="library/bootstrap.min.css">
+    <link rel="stylesheet" href="master.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="library/jquery-3.2.1.min.js"></script>
+    <script src="library/bootstrap.min.js"></script>
+  </head>
+  <body data-spy="scroll" data-target="#myscrollSpy" data-offset="15">
+      <div class="header">
+        <img src="newlogo.png" alt="workhub_logo" width="270px"; height="150px;">
+      </div>
+      <div class="sidenav">
+        <table>
+            <tr>
+              <th class="icon" rowspan="2"><i class="fa fa-user-circle-o" aria-hidden="true"></i></th>
+              <td class="username">John Doe</td>
+            </tr>
+            <tr>
+              <td class="role">Administrator</td>
+            </tr>
+        </table>
+        <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Add New User</button>
+        <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Add New Task</button>
+      </div>
+      <div id="id01" class="modal">
+        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
+        <form class="modal-content animate" action="/action_page.php">
+
+            <div class="container">
+              <label><b>First Name</b></label>
+              <input type="text" name="fname" required>
+
+              <label><b>Last Name</b></label>
+              <input type="text" name="lname" required>
+
+              <label><b>Username: </b></label>
+              <input type="text" name="username" required>
+
+              <label><b>E-mail</b></label>
+              <input type="text" placeholder="xxx@domain.com" name="email" required>
+
+              <label>Role: </label>
+              <select id="role" required>
+                <optgroup label="Role">
+                  <option value="admin">Admin</option>
+                  <option value="user">User</option>
+                </optgroup>
+              </select>
+              <label for="job">Team:</label>
+              <select id="job" name="user_job">
+                <optgroup label="Team">
+                  <option value="techsupport">Technical Support</option>
+                  <option value="platformops">Platform Ops</option>
+                </optgroup>
+              </select>
+
+              <div class="clearfix">
+                <button type="submit" class="signupbtn">Add New User</button>
+                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+              </div>
+        </form>
+      </div>
+<script>
+// Get the modal
+  var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+      if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+</script>
+  </body>
+</html>
