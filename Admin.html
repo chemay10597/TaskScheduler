@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <title>Admin Page</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="library/bootstrap.min.css">
+      <link rel="stylesheet" href="untitled.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <script src="library/jquery-3.2.1.min.js"></script>
+      <script src="library/bootstrap.min.js"></script>
+    </head>
+  <body data-spy="scroll" data-target="#myscrollSpy" data-offset="15">
+        <div class="header">
+              <img src="newlogo.png" alt="workhub_logo" width="270px"; height="150px;">
+        </div>
+      <div class="sidenav">
+        <table class="a">
+            <tr>
+              <th class="icon" rowspan="2"><i class="fa fa-user-circle-o" aria-hidden="true"></i></th>
+              <td class="username">John Doe</td>
+            </tr>
+            <tr>
+              <td class="role">Administrator</td>
+            </tr>
+        </table>
+        <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Add New User</button>
+        <button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Add New Task</button>
+        <div class="reports">
+          <h2><i class="fa fa-thumb-tack" aria-hidden="true"></i> Reports</h2>
+            <a href="#"><h4><i class="fa fa-angle-down" aria-hidden="true"></i> View Reports</h4></a>
+        </div> <br><br><br>
+        <div class="calendar">
+         <iframe src="https://calendar.google.com/calendar/embed?showTitle=0&amp;showNav=0&amp;showPrint=0&amp;height=250&amp;wkst=1&amp;hl=en&amp;bgcolor=%23FFFFFF&amp;src=en.philippines%23holiday%40group.v.calendar.google.com&amp;color=%23125A12&amp;ctz=Asia%2FManila" style="border-width:0" width="300" height="300" frameborder="0" scrolling="no"></iframe>
+        </div>
+      </div> <!-- end of sidenav -->
+
+      <div class="right-clock">
+          <table class="b">
+              <tr>
+                <th style="text-align: center;"><canvas id="canvas_tt59a5254ca0619" width="150" height="150"></canvas></th>
+                <th style="text-align: center;"><canvas id="canvas_tt59a5261733768" width="150" height="150"></canvas></th>
+                <th style="text-align: center;"><canvas id="canvas_tt59a52c567e76b" width="150" height="150"></canvas></th>
+              </tr>
+              <tr>
+                <th style="text-align: center; font-weight: bold"><a href="//24timezones.com/current_local/costa_rica_time.php" style="text-decoration: none" class="clock24" id="tz24-1503995212-cc11842-eyJzaXplIjoiMTUwIiwiYmdjb2xvciI6IjAwMDAwMCIsImxhbmciOiJlbiIsInR5cGUiOiJhIiwiY2FudmFzX2lkIjoiY2FudmFzX3R0NTlhNTI1NGNhMDYxOSJ9" title="Time in Costa Rica" target="_blank" rel="nofollow">Costa Rica</a></th>
+                <th style="text-align: center; font-weight: bold"><a href="//24timezones.com/usa_time/ok_mcclain/washington.htm" style="text-decoration: none" class="clock24" id="tz24-1503995415-cu126382-eyJzaXplIjoiMTUwIiwiYmdjb2xvciI6IjAwMDAwMCIsImxhbmciOiJlbiIsInR5cGUiOiJhIiwiY2FudmFzX2lkIjoiY2FudmFzX3R0NTlhNTI2MTczMzc2OCJ9" title="Time in Washington" target="_blank" rel="nofollow">United States</a></th>
+                <th style="text-align: center; font-weight: bold"><a href="//24timezones.com/current_local/philippines_time.php" style="text-decoration: none" class="clock24" id="tz24-1503997014-cc14848-eyJzaXplIjoiMTUwIiwiYmdjb2xvciI6IjAwMDAwMCIsImxhbmciOiJlbiIsInR5cGUiOiJhIiwiY2FudmFzX2lkIjoiY2FudmFzX3R0NTlhNTJjNTY3ZTc2YiJ9" title="Time in Philippines" target="_blank" rel="nofollow">Philippines</a></th>
+              </tr>
+              <script type="text/javascript" src="//w.24timezones.com/l.js" async></script>
+              <script type="text/javascript" src="//w.24timezones.com/l.js" async></script>
+              <script type="text/javascript" src="//w.24timezones.com/l.js" async></script>
+          </table>
+         </div>
+
+      <div id="id01" class="modal">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
+      <form class="modal-content animate" action="/action_page.php">
+        <div class="modal-header">
+          <h4 class="modal-title"><i class="fa fa-id-badge" aria-hidden="true"></i> Add New User</h4>
+        </div>
+        <div class="container">
+          <label><b>First Name</b></label>
+            <input type="text" name="fname" required>
+
+            <label><b>Last Name</b></label>
+            <input type="text" name="lname" required>
+
+            <label><b>Username</b></label>
+            <input type="text" placeholder="firstname.lastname" name="username" required>
+
+            <label><b>Email</b></label>
+            <input type="text" placeholder="xxx@domain.com" name="email" required>
+
+            <label>Role: </label>
+            <select id="role">
+              <optgroup label="Role">
+                <option value="admin">Admin</option>
+                <option value="user">User</option>
+              </optgroup>
+            </select>
+            <label for="job">Team:</label>
+            <select id="job" name="user_job">
+              <optgroup label="Team">
+                <option value="techsupport">Technical Support</option>
+                <option value="platformops">Platform Ops</option>
+              </optgroup>
+            </select>
+            <div class="clearfix">
+              <button type="submit" class="signupbtn">Add New User</button>
+              <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+            </div>
+          </div>
+      </form>
+      </div>
+      <script>
+      // Get the modal
+      var modal = document.getElementById('id01');
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+      }
+      </script>
+      <!-- modal 2 -->
+        <div id="id02" class="modal">
+         <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">×</span>
+         <form class="modal-content animate" action="/action_page.php">
+           <div class="modal-header">
+             <h4 class="modal-title">Add New Task</h4>
+           </div>
+           <div class="container">
+             <label><b>Task Subject</b></label>
+             <input type="text" name="tasksubject" required>
+
+             <label><b>Task Description</b></label>
+             <input type="text" name="taskdescription" required>
+
+             <label><b>Assign To</b></label>
+             <select id="assign" name="task_assign">
+               <optgroup label="Users">
+                 <option value="name1">USERS</option>
+                 <option value="name2">Firstname Lastname</option>
+                 <option value="name3">Firstname Lastname</option>
+                 <option value="name4">Firstname Lastname</option>
+                 <option value="name5">Firstname Lastname</option>
+                 <option value="name6">Firstname Lastname</option>
+               </optgroup>
+             </select>
+             <label>Custom: </label>
+             <input type="checkbox" name="user7"><label class="light">Firstname Lastname</label><br>
+             <input type="checkbox" name="user8"><label class="light">Firstname Lastname</label><br>
+             <input type="checkbox" name="user9"><label class="light">Firstname Lastname</label>
+
+             <label for="job">Team:</label>
+             <select id="job" name="user_job">
+               <optgroup label="Team">
+                 <option value="techsupport">Technical Support</option>
+                 <option value="platformops">Platform Ops</option>
+               </optgroup>
+             </select>
+             <label>Recurring Task: </label>
+             <input type="checkbox" value="mwf" name="task_mwf"><label class="light">Mon- Wed- Fri</label><br>
+             <input type="checkbox" value="tth" name="task_tth"><label class="light">Tue- Thurs</label><br>
+             <input type="checkbox" value="sat" name="task_sat"><label class="light">Sat</label>
+
+             <div class="clearfix">
+               <button type="submit" class="signupbtn">Add New Task</button>
+               <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+             </div>
+           </div>
+         </form>
+        </div>
+
+        <script>
+        // Get the modal
+        var modal = document.getElementById('id02');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+           if (event.target == modal) {
+               modal.style.display = "none";
+           }
+        }
+        </script>
+
+      <div class="main">
+        <h3><b>Tasks</b></h3>
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search" title="typetask">
+        <table class="table">
+          <thead>
+            <tr>
+             <th>Task ID</th>
+             <th>Priority</th>
+             <th>Task Name</th>
+             <th>Task Description</th>
+             <th>Assigned To</th>
+             <th>Team</th>
+             <th>Recurring Task</th>
+           </tr>
+         </thead>
+         <tbody>
+          <!-- table values -->
+         </tbody>
+     </table>
+     </div>
+
+   </body>
+  </html>
