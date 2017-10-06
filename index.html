@@ -1,54 +1,65 @@
 <!doctype html>
 <html ng-app>
   <head>
+    <title>Home</title>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="new-user.css">
+    <link rel="stylesheet" href="library/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="library/angular.min.js"></script>
     <script src="library/jquery-3.2.1.min.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <script src="library/bootstrap.min.js"></script>
   </head>
   <body>
-    <div class="header">
-        <img src="logo.png" alt="Logo" style="width:270px;" height="90px;">
-		</div>
-
-      <div class="img">
-          <img src="icon.png" alt="profile" style="width:80px;" height="80px;">
+      <div class="h-logo">
+          <img src="newlogo.png" alt="workhublogo">
+          <div class="right-clock">
+                <table class="b">
+                    <tr>
+                      <th style="text-align: center;"><canvas id="canvas_tt59cc9c0ec51c0" width="125" height="125"></canvas></th>
+                      <th style="text-align: center;"><canvas id="canvas_tt59cc9e5127c65" width="125" height="125"></canvas></th>
+                      <th style="text-align: center;"><canvas id="canvas_tt59cca060888e3" width="125" height="125"></canvas></th>
+                    </tr>
+                    <tr>
+                      <th style="text-align: center; font-weight: bold"><a href="//24timezones.com/current_local/philippines_time.php" style="text-decoration: none" class="clock24" id="tz24-1506581518-cc14848-eyJzaXplIjoiMTI1IiwiYmdjb2xvciI6IjAwMDAwMCIsImxhbmciOiJlbiIsInR5cGUiOiJhIiwiY2FudmFzX2lkIjoiY2FudmFzX3R0NTljYzljMGVjNTFjMCJ9" title="Time in Philippines" target="_blank">Philippines </a></th>
+                      <th style="text-align: center; font-weight: bold"><a href="//24timezones.com/world_directory/current_san_jose_cr_time.php" style="text-decoration: none" class="clock24" id="tz24-1506582097-c1225-eyJzaXplIjoiMTI1IiwiYmdjb2xvciI6IjAwMDAwMCIsImxhbmciOiJlbiIsInR5cGUiOiJhIiwiY2FudmFzX2lkIjoiY2FudmFzX3R0NTljYzllNTEyN2M2NSJ9" title="Time in San Jose" target="_blank">Costa Rica</a></th>
+                      <th style="text-align: center; font-weight: bold"><a href="//24timezones.com/world_directory/current_washington_time.php" style="text-decoration: none" class="clock24" id="tz24-1506582624-c1263-eyJzaXplIjoiMTI1IiwiYmdjb2xvciI6IjAwMDAwMCIsImxhbmciOiJlbiIsInR5cGUiOiJhIiwiY2FudmFzX2lkIjoiY2FudmFzX3R0NTljY2EwNjA4ODhlMyJ9" title="Time in Washington" target="_blank">United States</a></th>
+                    </tr>
+                    <script type="text/javascript" src="//w.24timezones.com/l.js" async></script>
+                </table>
+             </div>
+          </div>
+          <br/>
+      <div class="nav">
+            <ul>
+              <li class="task"><input type="checkbox" id=""> <label>Daily</label></li>
+              <li class="task"><input type="checkbox" id=""> <label>Weekly</label></li>
+              <li class="task"><input type="checkbox" id=""> <label>Monthly</label></li>
+              <li><a href="#alerts">Alerts <span class="badge">5</span></a></li>
+              <li><a href="#calendar">Calendar</a></li>
+              <li style="float:right"><a class="active" href="#user"><label>John Doe, Technical Support </label><i class="fa fa-chevron-down" aria-hidden="true"></i></a></li>
+            </ul>
       </div>
-</div>
-      <h2>ADMIN</h2>
-        <button><a href="user_form.php">Add New User</a></button>
-        <button><a href="task_form.php">Add New Task</a></button>
-    <div class="main">
-        <table>
-          <tr>
-            <th>Task Subject</th>
-            <th>Assigned To</th>
-            <th>Team</th>
-            <th>Priority</th>
-            <th>Recurring Task</th>
-            <th>Start Date</th>
-          </tr>
-          <tr>
-            <td>Configure Computer System</td>
-            <td>Juan Dela Cruz</td>
-            <td>Technical Support</td>
-            <td>High</td>
-            <td>M-W-F</td>
-            <td>August 1, 2017</td>
-          </tr>
-          <tr>
-            <td>Diagnose Software Faults</td>
-            <td>Juan Dela Cruz</td>
-            <td>Technical Support</td>
-            <td>High</td>
-            <td>Tue-Thurs</td>
-            <td>August 1, 2017</td>
-          </tr>
-        </table>
-      </div>
-
-      <div class="sidebar">
-       <iframe src="https://calendar.google.com/calendar/embed?showTitle=0&amp;showNav=0&amp;showPrint=0&amp;height=250&amp;wkst=1&amp;hl=en&amp;bgcolor=%23FFFFFF&amp;src=en.philippines%23holiday%40group.v.calendar.google.com&amp;color=%23125A12&amp;ctz=Asia%2FManila" style="border-width:0" width="300" height="300" frameborder="0" scrolling="no"></iframe>
+      <div class="container">
+        <h2>Tasks</h2>
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search" title="typetask">
+        <table class="table">
+          <thead>
+            <tr>
+             <th>Task ID</th>
+             <th>Priority</th>
+             <th>Task Name</th>
+             <th>Task Description</th>
+             <th>Assigned To</th>
+             <th>Team</th>
+             <th>Recurring Task</th>
+           </tr>
+         </thead>
+         <tbody>
+          <!-- table values -->
+         </tbody>
+     </table>
       </div>
   </body>
 </html>
