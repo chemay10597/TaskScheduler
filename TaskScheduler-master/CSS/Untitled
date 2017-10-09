@@ -1,0 +1,22 @@
+<?php
+$connect=mysqli_connect("localhost","root","","trax_task_scheduler_db");
+// Check connection
+if (mysqli_connect_errno())
+{
+echo "Failed to connect to MySQL: " . mysqli_connect_error();
+}
+
+$result = mysqli_query($connect,"SELECT last_name,first_name,team FROM user WHERE user_id='1'");
+echo "<table>
+while($row = mysqli_fetch_array($result))
+{
+echo "<tr>";
+echo "<td>" . $row['last_name'] . "</td>";
+echo "<td>" . $row['first_name'] . "</td>";
+echo "</tr>";
+}
+echo "</tbody>";
+echo "</table>";
+echo "</div>";
+mysqli_close($connect);
+?>
