@@ -25,7 +25,7 @@
 
     <!-- Code to validate the add new user field -->
     <script>
-              function IsEmpty(){
+              function IsEmptyUser(){
             if(document.forms['myUserForm'].first_name.value === "")
             {
               alert("empty first name!");
@@ -41,6 +41,88 @@
             }
             else if(document.forms['myUserForm'].email.value === ""){
               alert("empty email!");
+              return false;
+            }
+            else {
+              return true;
+              }
+          }
+    </script>
+
+    <!-- Code to validate the add new task field -->
+    <script>
+              function IsEmptyTask(){
+            if(document.forms['myTaskForm'].task_name.value === "")
+            {
+              alert("empty task name!");
+              return false;
+            }
+            else if(document.forms['myTaskForm'].task_description.value === ""){
+              alert("empty task description!");
+              return false;
+            }
+            else if(document.forms['myTaskForm'].task_recursion.value === ""){
+              alert("empty type of task");
+              return false;
+            }
+            else if(document.forms['myTaskForm'].day.value === ""){
+              alert("empty day!");
+              return false;
+            }
+            else if(document.forms['myTaskForm'].dtime_start.value === ""){
+              alert("empty time start!");
+              return false;
+            }
+            else if(document.forms['myTaskForm'].dtime_end.value === ""){
+              alert("empty time end!");
+              return false;
+            }
+            else if(document.forms['myTaskForm'].dtask_duration.value === ""){
+              alert("empty task task duration!");
+              return false;
+            }
+            else if(document.forms['myTaskForm'].task_day.value === ""){
+              alert("empty day!");
+              return false;
+            }
+            else if(document.forms['myTaskForm'].wtime_start.value === ""){
+              alert("empty time start!");
+              return false;
+            }
+            else if(document.forms['myTaskForm'].wtime_end.value === ""){
+              alert("empty time end!");
+              return false;
+            }
+            else if(document.forms['myTaskForm'].wtask_duration.value === ""){
+              alert("empty task task duration!");
+              return false;
+            }
+            else if(document.forms['myTaskForm'].date_ofthe_month.value === ""){
+              alert("empty date of the month!");
+              return false;
+            }
+            else if(document.forms['myTaskForm'].mtime_start.value === ""){
+              alert("empty time start!");
+              return false;
+            }
+            else if(document.forms['myTaskForm'].mtime_end.value === ""){
+              alert("empty time end!");
+              return false;
+            }
+            else if(document.forms['myTaskForm'].mtask_duration.value === ""){
+              alert("empty task task duration!");
+              return false;
+            }
+            else if(document.forms['myTaskForm'].start_datetime.value === ""){
+              alert("empty date and time start!");
+              return false;
+            }
+            else if(document.forms['myTaskForm'].end_datetime.value === ""){
+              alert("empty date and time end!");
+              return false;
+            }
+            else if(document.forms['myTaskForm'].task_duration.value === ""){
+              alert("empty task duration!");
               return false;
             }
             else {
@@ -96,6 +178,26 @@
     });
     </script>
 
+    <script type="text/javascript">
+          $(document).ready(function(){
+        $('#task_status').on('change', function() {
+
+          if ( this.value == 'assigned')
+          //.....................^.......
+          {;
+            $("#assign").show();
+          }
+
+          if ( this.value == 'unassigned')
+          //.....................^.......
+          {;
+            $("#assign").hide();
+          }
+
+        });
+    });
+    </script>
+
     <!-- table display style -->
       <style>
         table.table2 {
@@ -146,13 +248,13 @@
     <div class="right-clock" style="position:absolute; top:0; right:0;">
         <table class="b">
             <tr>
-              <th style="text-align: center; font-weight: bold"></th>
+              <!--<th style="text-align: center; font-weight: bold"></th>-->
               <th style="text-align: center;"><canvas id="canvas_tt59a5254ca0619" width="150" height="150"></canvas></th>
               <th style="text-align: center;"><canvas id="canvas_tt59a5261733768" width="150" height="150"></canvas></th>
               <th style="text-align: center;"><canvas id="canvas_tt59a52c567e76b" width="150" height="150"></canvas></th>
             </tr>
             <tr>
-              <th style="text-align: center; font-weight: bold"><input type=button value="refresh"><a href="index.html"></a></input></th>
+              <!--<th style="text-align: center; font-weight: bold"><input type=button value="refresh"><a href="index.html"></a></input></th>-->
               <th style="text-align: center; font-weight: bold"><a href="//24timezones.com/current_local/costa_rica_time.php" style="text-decoration: none" class="clock24" id="tz24-1503995212-cc11842-eyJzaXplIjoiMTUwIiwiYmdjb2xvciI6IjAwMDAwMCIsImxhbmciOiJlbiIsInR5cGUiOiJhIiwiY2FudmFzX2lkIjoiY2FudmFzX3R0NTlhNTI1NGNhMDYxOSJ9" title="Time in Costa Rica" target="_blank" rel="nofollow">Costa Rica</a></th>
               <th style="text-align: center; font-weight: bold"><a href="//24timezones.com/usa_time/ok_mcclain/washington.htm" style="text-decoration: none" class="clock24" id="tz24-1503995415-cu126382-eyJzaXplIjoiMTUwIiwiYmdjb2xvciI6IjAwMDAwMCIsImxhbmciOiJlbiIsInR5cGUiOiJhIiwiY2FudmFzX2lkIjoiY2FudmFzX3R0NTlhNTI2MTczMzc2OCJ9" title="Time in Washington" target="_blank" rel="nofollow">United States</a></th>
               <th style="text-align: center; font-weight: bold"><a href="//24timezones.com/current_local/philippines_time.php" style="text-decoration: none" class="clock24" id="tz24-1503997014-cc14848-eyJzaXplIjoiMTUwIiwiYmdjb2xvciI6IjAwMDAwMCIsImxhbmciOiJlbiIsInR5cGUiOiJhIiwiY2FudmFzX2lkIjoiY2FudmFzX3R0NTlhNTJjNTY3ZTc2YiJ9" title="Time in Philippines" target="_blank" rel="nofollow">Philippines</a></th>
@@ -191,7 +293,7 @@
            </select>
            </fieldset>
              <div class="clearfix">
-               <button class="register_button" type="submit" name="submituser" value="submit" style="width:300px;" onclick="return IsEmpty();">Add User</button>
+               <button class="register_button" type="submit" name="submituser" value="submit" style="width:300px;" onclick="return IsEmptyUser();">Add User</button>
                <br/>
                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn" style="width:300px;">Cancel</button>
              </div>
@@ -235,7 +337,7 @@
        <!-- code to add new task -->
        <div id="id02" class="modal">
         <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">×</span>
-        <form class="modal-content animate" method="post" action="">
+        <form class="modal-content animate" method="post" action="" name="myTaskForm" id="myTaskForm">
           <div class="modal-header">
             <h4 class="modal-title"><i class="fa fa-id-badge" aria-hidden="true"></i> Add New Task</h4>
           </div>
@@ -426,6 +528,13 @@
                  <input id="task_duration" type="text" name="task_duration" onChange="changeDate()" />
                </div>
 
+               <label for="name">Task Current Status: </label>
+               <select class="input" id="task_status" name="task_status" value="">
+                 <option value="unassigned">Unassigned</option>
+                 <option value="assigned">Assigned</option>
+               </select>
+
+               <div id="assign" style='display:none;'>
               <!--//Assign To!!!-->
               <label for="name">Assign To: </label>
               <?php
@@ -446,7 +555,7 @@
               echo "</select>";
               mysqli_close($connect);
               ?>
-
+            </div>
               <!--//Assign By!!!-->
               <label for="name">Assign By: </label>
               <?php
@@ -474,12 +583,9 @@
                 <option value="low priority">Low Priority</option>
               </select>
 
-              <label for="name">Task Current Status: </label>
-                <input type="text" class="input" id="task_status" name="task_status" value="assigned"></option>
-
             </fieldset>
             <div class="clearfix">
-              <button type="submit" name="submittask" class="signupbtn" style="width:300px;">Add New Task</button>
+              <button type="submit" name="submittask" class="signupbtn" style="width:300px;" onclick="return IsEmptyTask();">Add New Task</button>
               <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn" style="width:300px;">Cancel</button>
             </div>
             <!-- code to add new task connected to databaseconn -->

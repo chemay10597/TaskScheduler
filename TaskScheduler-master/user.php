@@ -41,9 +41,9 @@
             <li class="task"><input type="checkbox" id=""> <label>Monthly</label></li>
             <li><a href="#alerts">Alerts <span class="badge">5</span></a></li>
             <li><a href="#calendar">Calendar</a></li>
-            <li style="float:right"><a class="active" href="#user">
+            <!--<li style="float:right"><a class="active" href="#user">-->
               <?php
-              $connect=mysqli_connect("localhost","root","","trax_task_scheduler_db");
+              /*$connect=mysqli_connect("localhost","root","","trax_task_scheduler_db");
               // Check connection
               if (mysqli_connect_errno())
               {
@@ -62,14 +62,15 @@
               echo "</tr>";
               }
               echo "</table>";
-              mysqli_close($connect);
+              mysqli_close($connect);*/
               ?>
-            <i class="fa fa-chevron-down" aria-hidden="true"></i></a></li>
+            <!--<i class="fa fa-chevron-down" aria-hidden="true"></i></a></li>-->
           </ul>
     </div>
     <div class="container">
       <h2>Tasks</h2>
       <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search" title="typetask">
+      <form method="post" action="">
       <?php
       $connect=mysqli_connect("localhost","root","","trax_task_scheduler_db");
       // Check connection
@@ -83,6 +84,7 @@
       echo "<table class='table'>
       <thead>
       <tr>
+      <th>Task ID</th>
       <th>Task Name</th>
       <th>Task Description</th>
       <th>Task Recursion</th>
@@ -96,6 +98,10 @@
       {
       echo "<tbody>";
       echo "<tr>";
+      echo "<td>";
+      echo "<input value='". $row['task_id'] ."' type='hidden' name='task_id' id='task_id'>";
+      echo "</input>";
+      echo "</td>";
       echo "<td>" . $row['task_name'] . "</td>";
       echo "<td>" . $row['task_description'] . "</td>";
       echo "<td>" . $row['task_recursion'] . "</td>";
@@ -103,7 +109,7 @@
       echo "<td>" . $row['task_priority'] . "</td>";
       echo "<td>" . $row['task_status'] . "</td>";
       echo "<td>";
-      echo "<select name='task_status' id='task_status' value='' form='my_form'>";
+      echo "<select name='task_status' id='task_status' value=''>";
       echo "<option value=''>" . 'Status..' . "</option>";
       echo "<option value='finished'>" . 'Finished' . "</option>";
       echo "<option value='terminated'>" . 'Terminated' . "</option>";
@@ -113,7 +119,7 @@
       echo "</select>";
       echo "</td>";
       echo "<td>";
-      echo "<input type='submit' value='update status' form='my_form'>";
+      echo "<input type='submit' name='submitupdate' value='update status'>";
       echo "</input>";
       echo "</td>";
       echo "</tr>";
@@ -123,6 +129,38 @@
       echo "</div>";
       mysqli_close($connect);
       ?>
+    </form>
     </div>
+    <?php
+      $servername = "localhost";
+      $username = "root";
+      $password = "";
+      $dbname = "trax_task_scheduler_db";
+
+      // Create connection
+      $conn = new mysqli($servername, $username, $password, $dbname);
+      // Check connection
+      if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+      }
+      if(isset($_POST['submitupdate']))
+       {
+       // create a variable
+       $task_id = $_POST['task_id'];
+       $task_status = $_POST['task_status'];
+       //$task_id = mysqli_real_escape_string($_POST['task_id']);
+       //$task_status = mysqli_real_escape_string($_POST['task_status']);
+
+      $sql = "UPDATE task SET task_status = '$task_status'  WHERE task_id='$task_id' LIMIT 1 ";
+
+      if ($conn->query($sql) === TRUE) {
+        echo "Record updated successfully";
+      } else {
+        echo "Error updating record: " . $conn->error;
+      }
+      }
+
+      $conn->close();
+      ?>
   </body>
 </html>
