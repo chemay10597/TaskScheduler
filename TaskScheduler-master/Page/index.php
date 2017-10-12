@@ -3,20 +3,16 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page Admin</title>
+    <title>Home Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="CSS/bootstrap.min.css"><!--
+    <link rel="stylesheet" href="CSS/bootstrap.min.css">
     <link rel="stylesheet" href="CSS/untitled.css">
-    <link rel="stylesheet" href="CSS/font-awesome.min.css">-->
-    <!--<link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>-->
+    <link rel="stylesheet" href="CSS/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="CSS/main.css">
+    <script src="library/jquery-3.2.1.min.js"></script>
+    <script src="library/bootstrap.min.js"></script>
     <script type="text/javascript" src="Library/jquery.min.js"></script>
-    <link rel="stylesheet" href="CSS/admin.css">
-    <link rel="stylesheet" href="Library/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="Library/angular.min.js"></script>
-    <script src="Library/jquery-3.2.1.min.js"></script>
-    <script src="Library/bootstrap.min.js"></script>
 
     <!-- Code to combine firstname and lastname for the username -->
     <script langugae="javascript">
@@ -217,51 +213,57 @@
         table.table2 tr:nth-child(even){background-color: #f2f2f2}
 
         table.table2 th {
-            background-color: #808080;
+            background-color: #4CAF50;
             color: white;
-        }
-
-        tr.tdstyle  {
-            border: 1px solid #dddddd;
-            text-align: left;
         }
         </style>
   </head>
 
-  <body>
-    <div class="h-logo">
-        <img src="PNG/logo.png" alt="workhublogo">
-        <img src="PNG/platformlogo.png" class="logo" alt="center">
-      <div class="right-clock">
-        <table class="a">
-            <tr>
-              <th class="name"><iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=en&size=small&timezone=Asia%2FManila" width="90%" height="90" frameborder="0" seamless></iframe></th>
-              <th class="name"><iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=en&size=small&timezone=America%2FCosta_Rica" width="90%" height="90" frameborder="0" seamless></iframe></th>
-              <th class="name"><iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=en&size=small&timezone=America%2FPhoenix" width="90%" height="90" frameborder="0" seamless></iframe> </th>
-            </tr>
-            <tr>
-                <th class="name">Philippines</th>
-                <th class="name">Costa Rica</th>
-                <th class="name">USA</th>
-            </tr>
-            </table>
+  <body data-spy="scroll" data-target="#myscrollSpy" data-offset="15">
+    <div style="position:absolute; top:5em; left:5em;">
+          <img src="PNG/logo.png" alt="workhub_logo" width="270px"; height="150px;">
+    </div>
+    <div class="sidenav">
+      <table class="a">
+          <tr>
+            <!--<th class="icon" rowspan="2"><i class="fa fa-user-circle-o" aria-hidden="true"></i></th>-->
+            <td class="username">John Doe</td>
+          </tr>
+          <tr>
+            <td class="role">Administrator</td>
+          </tr>
+      </table>
+      <button onclick="document.getElementById('id01').style.display='block'" style="width:300px;">Add New User</button>
+    <br/>
+      <button onclick="document.getElementById('id02').style.display='block'" style="width:300px;">Add New Task</button>
+      <div class="reports">
+        <h2><i class="fa fa-thumb-tack" aria-hidden="true"></i> Reports</h2>
+          <a href="#"><h4><i class="fa fa-angle-down" aria-hidden="true"></i> View Reports</h4></a>
       </div>
-        <br/>
-      <div class="navbar">
-          <ul>
-            <li class="task"><a onclick="document.getElementById('id01').style.display='block'">Add New User</a></li>
-            <li class="task"><a onclick="document.getElementById('id02').style.display='block'">Add New Task</a></li>
-            <li class="task"><input type="checkbox" name="cod0"> <label>All Task</label></li>
-            <li class="task"><input type="checkbox" name="cod1"> <label>Daily</label></li>
-            <li class="task"><input type="checkbox" name="cod2"> <label>Weekly</label></li>
-            <li class="task"><input type="checkbox" name="cod3"> <label>Monthly</label></li>
-            <li class="task"><input type="checkbox" name="cod4"> <label>Customize</label></li>
-            <li class="task"><a href="#alerts">Reports <span class="badge">5</span></a></li>
-            <li class="task"><a href="#calendar">Calendar</a></li>
-          </ul>
-
-    </div>
-    </div>
+      <div class="calendar">
+       <iframe src="https://calendar.google.com/calendar/embed?showTitle=0&amp;showNav=0&amp;showPrint=0&amp;height=250&amp;wkst=1&amp;hl=en&amp;bgcolor=%23FFFFFF&amp;src=en.philippines%23holiday%40group.v.calendar.google.com&amp;color=%23125A12&amp;ctz=Asia%2FManila" style="border-width:0" width="300" height="300" frameborder="0" scrolling="no"></iframe>
+      </div>
+    </div> <!-- end of sidenav -->
+    <!-- display clock -->
+    <div class="right-clock" style="position:absolute; top:0; right:0;">
+        <table class="b">
+            <tr>
+              <!--<th style="text-align: center; font-weight: bold"></th>-->
+              <th style="text-align: center;"><canvas id="canvas_tt59a5254ca0619" width="150" height="150"></canvas></th>
+              <th style="text-align: center;"><canvas id="canvas_tt59a5261733768" width="150" height="150"></canvas></th>
+              <th style="text-align: center;"><canvas id="canvas_tt59a52c567e76b" width="150" height="150"></canvas></th>
+            </tr>
+            <tr>
+              <!--<th style="text-align: center; font-weight: bold"><input type=button value="refresh"><a href="index.html"></a></input></th>-->
+              <th style="text-align: center; font-weight: bold"><a href="//24timezones.com/current_local/costa_rica_time.php" style="text-decoration: none" class="clock24" id="tz24-1503995212-cc11842-eyJzaXplIjoiMTUwIiwiYmdjb2xvciI6IjAwMDAwMCIsImxhbmciOiJlbiIsInR5cGUiOiJhIiwiY2FudmFzX2lkIjoiY2FudmFzX3R0NTlhNTI1NGNhMDYxOSJ9" title="Time in Costa Rica" target="_blank" rel="nofollow">Costa Rica</a></th>
+              <th style="text-align: center; font-weight: bold"><a href="//24timezones.com/usa_time/ok_mcclain/washington.htm" style="text-decoration: none" class="clock24" id="tz24-1503995415-cu126382-eyJzaXplIjoiMTUwIiwiYmdjb2xvciI6IjAwMDAwMCIsImxhbmciOiJlbiIsInR5cGUiOiJhIiwiY2FudmFzX2lkIjoiY2FudmFzX3R0NTlhNTI2MTczMzc2OCJ9" title="Time in Washington" target="_blank" rel="nofollow">United States</a></th>
+              <th style="text-align: center; font-weight: bold"><a href="//24timezones.com/current_local/philippines_time.php" style="text-decoration: none" class="clock24" id="tz24-1503997014-cc14848-eyJzaXplIjoiMTUwIiwiYmdjb2xvciI6IjAwMDAwMCIsImxhbmciOiJlbiIsInR5cGUiOiJhIiwiY2FudmFzX2lkIjoiY2FudmFzX3R0NTlhNTJjNTY3ZTc2YiJ9" title="Time in Philippines" target="_blank" rel="nofollow">Philippines</a></th>
+            </tr>
+            <script type="text/javascript" src="//w.24timezones.com/l.js" async></script>
+            <script type="text/javascript" src="//w.24timezones.com/l.js" async></script>
+            <script type="text/javascript" src="//w.24timezones.com/l.js" async></script>
+        </table>
+       </div>
        <!-- code to add new user -->
        <div id="id01" class="modal">
        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
@@ -280,20 +282,20 @@
              <label for="email">Email:</label>
              <input type="email" name="email" placeholder="user@domain.com" value="">
              <label>Role: </label>
-             <select name="account_type" value="">
+             <select class="input" name="account_type" value="">
                  <option value="user">User</option>
                  <option value="admin">Admin</option>
              </select>
            <label for="user_team">Team:</label>
-           <select name="team" value="">
+           <select class="input" name="team" value="">
                <option value="techsupport">Technical Support</option>
                <option value="platformops">Platform Ops</option>
            </select>
            </fieldset>
              <div class="clearfix">
-               <button class="btnMain" type="submit" name="submituser" value="submit" style="width:300px;" onclick="return IsEmptyUser();" >Add User</button>
+               <button class="register_button" type="submit" name="submituser" value="submit" style="width:300px;" onclick="return IsEmptyUser();">Add User</button>
                <br/>
-               <button type="button" onclick="document.getElementById('id01').style.display='none'" class="btnMainCancel" style="width:300px;">Cancel</button>
+               <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn" style="width:300px;">Cancel</button>
              </div>
            </div>
        </form>
@@ -546,7 +548,6 @@
               $result = mysqli_query($connect,"SELECT user_id,user_name FROM user WHERE account_type='user'");
 
               echo "<select name='assign_to' id='assign_to'>";
-              //echo "<option value=''>" . 'choose user' . "</option>";
               while($row = mysqli_fetch_array($result))
               {
                       echo "<option value='". $row['user_id'] ."'>" . $row['user_name'] . "</option>";
@@ -584,9 +585,8 @@
 
             </fieldset>
             <div class="clearfix">
-              <button type="submit" name="submittask" class="btnMain" style="width:300px;" onclick="return IsEmptyTask();">Add New Task</button>
-              <br>
-              <button type="button" onclick="document.getElementById('id02').style.display='none'" class="btnMainCancel" style="width:300px;">Cancel</button>
+              <button type="submit" name="submittask" class="signupbtn" style="width:300px;" onclick="return IsEmptyTask();">Add New Task</button>
+              <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn" style="width:300px;">Cancel</button>
             </div>
             <!-- code to add new task connected to databaseconn -->
             <?php include 'databaseconn.php'; ?>
@@ -607,11 +607,6 @@
             //Execute the query
             mysqli_query($connect, "INSERT INTO task (task_name,task_description,task_recursion,assign_to,assign_by,task_priority,task_status)
             				VALUES('$task_name','$task_description','$task_recursion','$assign_to','$assign_by','$task_priority','$task_status')");
-
-                    if($task_status=='unassigned'){
-                      mysqli_query($connect, "INSERT INTO task (task_name,task_description,task_recursion,assign_by,task_priority,task_status)
-                      				VALUES('$task_name','$task_description','$task_recursion','$assign_by','$task_priority','$task_status')");
-                    }
 
             if($task_recursion=='customize'){
             	$start_datetime = $_POST['start_datetime'];
@@ -675,11 +670,11 @@
        </script>
 
       <div class="main">
-        <!--<br></br>
         <br></br>
-        <h3>List of Users</h3>-->
+        <br></br>
+        <h3>List of Users</h3>
       <?php
-      /*$connect=mysqli_connect("localhost","root","","trax_task_scheduler_db");
+      $connect=mysqli_connect("localhost","root","","trax_task_scheduler_db");
       // Check connection
       if (mysqli_connect_errno())
       {
@@ -690,7 +685,7 @@
       echo "<div id='divuserview'>";
       echo "<table class='table2'>
       <thead>
-      <tr  style='background-color: #f3f3f3;'>
+      <tr>
       <th>User ID</th>
       <th>Firstname</th>
       <th>Lastname</th>
@@ -719,10 +714,10 @@
       echo "</a>";
       echo "</table>";
       echo "</div>";
-      mysqli_close($connect);*/
+      mysqli_close($connect);
       ?>
-      <div id="alltasktype">
-      <h3>All Task</h3>
+      </br></br>
+      <h3>All Tasks</h3>
         <?php
         $connect=mysqli_connect("localhost","root","","trax_task_scheduler_db");
         // Check connection
@@ -749,7 +744,7 @@
         while($row = mysqli_fetch_array($result))
         {
         echo "<tbody>";
-        echo "<tr class='tdstyle'>";
+        echo "<tr>";
         echo "<td>" . $row['task_name'] . "</td>";
         echo "<td>" . $row['task_description'] . "</td>";
         echo "<td>" . $row['task_recursion'] . "</td>";
@@ -764,248 +759,6 @@
         echo "</div>";
         mysqli_close($connect);
         ?>
-      </div>
-
-      <script>
-      $('[name="cod0"]').on('change', function() {
-      $('#alltasktype').toggle(this.checked);
-      }).change();
-      </script>
-
-      <div id="dailytype">
-        <h3>Daily Tasks</h3>
-          <?php
-          $connect=mysqli_connect("localhost","root","","trax_task_scheduler_db");
-          // Check connection
-          if (mysqli_connect_errno())
-          {
-          echo "Failed to connect to MySQL: " . mysqli_connect_error();
-          }
-
-          $result = mysqli_query($connect,"SELECT * FROM task JOIN daily_task ON daily_task.task_id=task.task_id");
-          echo "<div id='divuserview'>";
-          echo "<table class='table2'>
-          <thead>
-          <tr>
-          <th>Task Name</th>
-          <th>Task Description</th>
-          <th>Task Recursion</th>
-          <th>Assign To</th>
-          <th>Assign By</th>
-          <th>Level of Priority</th>
-          <th>Task Status</th>
-          <th>Task Days</th>
-          <th>Time Start</th>
-          <th>Time End</th>
-          <th>Task Duration</th>
-          </tr>
-          </thead>";
-
-          while($row = mysqli_fetch_array($result))
-          {
-          echo "<tbody>";
-          echo "<tr class='tdstyle'>";
-          echo "<td>" . $row['task_name'] . "</td>";
-          echo "<td>" . $row['task_description'] . "</td>";
-          echo "<td>" . $row['task_recursion'] . "</td>";
-          echo "<td>" . $row['assign_to'] . "</td>";
-          echo "<td>" . $row['assign_by'] . "</td>";
-          echo "<td>" . $row['task_priority'] . "</td>";
-          echo "<td>" . $row['task_status'] . "</td>";
-          echo "<td>" . $row['day'] . "</td>";
-          echo "<td>" . $row['dtime_start'] . "</td>";
-          echo "<td>" . $row['dtime_end'] . "</td>";
-          echo "<td>" . $row['dtask_duration'] . "</td>";
-          echo "</tr>";
-          }
-          echo "</tbody>";
-          echo "</table>";
-          echo "</div>";
-          mysqli_close($connect);
-          ?>
-        </div>
-
-        <script>
-        $('[name="cod1"]').on('change', function() {
-        $('#dailytype').toggle(this.checked);
-        }).change();
-        </script>
-
-        <div id="weeklytype">
-          <h3>Weekly Tasks</h3>
-            <?php
-            $connect=mysqli_connect("localhost","root","","trax_task_scheduler_db");
-            // Check connection
-            if (mysqli_connect_errno())
-            {
-            echo "Failed to connect to MySQL: " . mysqli_connect_error();
-            }
-
-            $result = mysqli_query($connect,"SELECT * FROM task JOIN weekly_task ON weekly_task.task_id=task.task_id");
-            echo "<div id='divuserview'>";
-            echo "<table class='table2'>
-            <thead>
-            <tr>
-            <th>Task Name</th>
-            <th>Task Description</th>
-            <th>Task Recursion</th>
-            <th>Assign To</th>
-            <th>Assign By</th>
-            <th>Level of Priority</th>
-            <th>Task Status</th>
-            <th>Task Day</th>
-            <th>Time Start</th>
-            <th>Time End</th>
-            <th>Task Duration</th>
-            </tr>
-            </thead>";
-
-            while($row = mysqli_fetch_array($result))
-            {
-            echo "<tbody>";
-            echo "<tr class='tdstyle'>";
-            echo "<td>" . $row['task_name'] . "</td>";
-            echo "<td>" . $row['task_description'] . "</td>";
-            echo "<td>" . $row['task_recursion'] . "</td>";
-            echo "<td>" . $row['assign_to'] . "</td>";
-            echo "<td>" . $row['assign_by'] . "</td>";
-            echo "<td>" . $row['task_priority'] . "</td>";
-            echo "<td>" . $row['task_status'] . "</td>";
-            echo "<td>" . $row['task_day'] . "</td>";
-            echo "<td>" . $row['wtime_start'] . "</td>";
-            echo "<td>" . $row['wtime_end'] . "</td>";
-            echo "<td>" . $row['wtask_duration'] . "</td>";
-            echo "</tr>";
-            }
-            echo "</tbody>";
-            echo "</table>";
-            echo "</div>";
-            mysqli_close($connect);
-            ?>
-          </div>
-
-          <script>
-          $('[name="cod2"]').on('change', function() {
-          $('#weeklytype').toggle(this.checked);
-          }).change();
-          </script>
-
-          <div id="monthlytype">
-            <h3>Monthly Tasks</h3>
-              <?php
-              $connect=mysqli_connect("localhost","root","","trax_task_scheduler_db");
-              // Check connection
-              if (mysqli_connect_errno())
-              {
-              echo "Failed to connect to MySQL: " . mysqli_connect_error();
-              }
-
-              $result = mysqli_query($connect,"SELECT * FROM task JOIN monthly_task ON monthly_task.task_id=task.task_id");
-              echo "<div id='divuserview'>";
-              echo "<table class='table2'>
-              <thead>
-              <tr>
-              <th>Task Name</th>
-              <th>Task Description</th>
-              <th>Task Recursion</th>
-              <th>Assign To</th>
-              <th>Assign By</th>
-              <th>Level of Priority</th>
-              <th>Task Status</th>
-              <th>Task Date</th>
-              <th>Time Start</th>
-              <th>Time End</th>
-              <th>Task Duration</th>
-              </tr>
-              </thead>";
-
-              while($row = mysqli_fetch_array($result))
-              {
-              echo "<tbody>";
-              echo "<tr class='tdstyle'>";
-              echo "<td>" . $row['task_name'] . "</td>";
-              echo "<td>" . $row['task_description'] . "</td>";
-              echo "<td>" . $row['task_recursion'] . "</td>";
-              echo "<td>" . $row['assign_to'] . "</td>";
-              echo "<td>" . $row['assign_by'] . "</td>";
-              echo "<td>" . $row['task_priority'] . "</td>";
-              echo "<td>" . $row['task_status'] . "</td>";
-              echo "<td>" . $row['date_ofthe_month'] . "</td>";
-              echo "<td>" . $row['mtime_start'] . "</td>";
-              echo "<td>" . $row['mtime_end'] . "</td>";
-              echo "<td>" . $row['mtask_duration'] . "</td>";
-              echo "</tr>";
-              }
-              echo "</tbody>";
-              echo "</table>";
-              echo "</div>";
-              mysqli_close($connect);
-              ?>
-            </div>
-
-            <script>
-            $('[name="cod3"]').on('change', function() {
-            $('#monthlytype').toggle(this.checked);
-            }).change();
-            </script>
-
-            <div id="customizetype">
-              <h3>Customize Tasks</h3>
-                <?php
-                $connect=mysqli_connect("localhost","root","","trax_task_scheduler_db");
-                // Check connection
-                if (mysqli_connect_errno())
-                {
-                echo "Failed to connect to MySQL: " . mysqli_connect_error();
-                }
-
-                $result = mysqli_query($connect,"SELECT * FROM task JOIN customize_task ON customize_task.task_id=task.task_id");
-                echo "<div id='divuserview'>";
-                echo "<table class='table2'>
-                <thead>
-                <tr>
-                <th>Task Name</th>
-                <th>Task Description</th>
-                <th>Task Recursion</th>
-                <th>Assign To</th>
-                <th>Assign By</th>
-                <th>Level of Priority</th>
-                <th>Task Status</th>
-                <th>Start Date</th>
-                <th>End Date</th>
-                <th>Task Duration</th>
-                </tr>
-                </thead>";
-
-                while($row = mysqli_fetch_array($result))
-                {
-                echo "<tbody>";
-                echo "<tr class='tdstyle'>";
-                echo "<td>" . $row['task_name'] . "</td>";
-                echo "<td>" . $row['task_description'] . "</td>";
-                echo "<td>" . $row['task_recursion'] . "</td>";
-                echo "<td>" . $row['assign_to'] . "</td>";
-                echo "<td>" . $row['assign_by'] . "</td>";
-                echo "<td>" . $row['task_priority'] . "</td>";
-                echo "<td>" . $row['task_status'] . "</td>";
-                echo "<td>" . $row['start_datetime'] . "</td>";
-                echo "<td>" . $row['end_datetime'] . "</td>";
-                echo "<td>" . $row['task_duration'] . "</td>";
-                echo "</tr>";
-                }
-                echo "</tbody>";
-                echo "</table>";
-                echo "</div>";
-                mysqli_close($connect);
-                ?>
-              </div>
-
-              <script>
-              $('[name="cod4"]').on('change', function() {
-              $('#customizetype').toggle(this.checked);
-              }).change();
-              </script>
-
       </div>
   </body>
 </html>

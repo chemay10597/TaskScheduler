@@ -17,7 +17,6 @@ th.name{
   margin-top: 5px;
   width: 200px;
 }
-
 ul {
     list-style-type: none;
     margin: 0;
@@ -59,19 +58,5 @@ li a:hover:not(.active) {
 }
 .right-clock{
   float: right;
-}
-
-.thstyle {
-  background-color: #4CAF50;
-}
-
-table.tstyle {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-tr.tdstyle  {
-    border: 1px solid #dddddd;
-    text-align: left;
 }
 </style>
