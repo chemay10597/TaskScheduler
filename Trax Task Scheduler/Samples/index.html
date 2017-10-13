@@ -1,0 +1,65 @@
+<!doctype html>
+<html ng-app>
+  <head>
+    <title>Homepage User</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="new-user.css">
+    <link rel="stylesheet" href="library/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="library/angular.min.js"></script>
+    <script src="library/jquery-3.2.1.min.js"></script>
+    <script src="library/bootstrap.min.js"></script>
+  </head>
+  <body>
+      <div class="h-logo">
+          <img src="logo.png" alt="workhublogo">
+          <img src="platformlogo.png" class="logo" alt="center">
+          <div class="right-clock">
+            <table class="a">
+                <tr>
+                  <th class="name"><iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=en&size=small&timezone=Asia%2FManila" width="90%" height="90" frameborder="0" seamless></iframe></th>
+                  <th class="name"><iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=en&size=small&timezone=America%2FCosta_Rica" width="90%" height="90" frameborder="0" seamless></iframe></th>
+                  <th class="name"><iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=en&size=small&timezone=America%2FPhoenix" width="90%" height="90" frameborder="0" seamless></iframe> </th>
+                </tr>
+                <tr>
+                    <th class="name">Philippines</th>
+                    <th class="name">Costa Rica</th>
+                    <th class="name">USA</th>
+                </tr>
+                </table>
+             </div>
+          </div>
+          <br/>
+      <div class="nav">
+            <ul>
+              <li class="task"><input type="checkbox" id=""> <label>Daily</label></li>
+              <li class="task"><input type="checkbox" id=""> <label>Weekly</label></li>
+              <li class="task"><input type="checkbox" id=""> <label>Monthly</label></li>
+              <li><a href="#alerts">Alerts <span class="badge">5</span></a></li>
+              <li><a href="#calendar">Calendar</a></li>
+              <li style="float:right"><a class="active" href="#user"><label>John Doe, Technical Support </label><i class="fa fa-chevron-down" aria-hidden="true"></i></a></li>
+            </ul>
+      </div>
+      <div class="container">
+        <h2>Tasks</h2>
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search" title="typetask">
+        <table class="table">
+          <thead>
+            <tr>
+             <th>Task ID</th>
+             <th>Priority</th>
+             <th>Task Name</th>
+             <th>Task Description</th>
+             <th>Assigned To</th>
+             <th>Team</th>
+             <th>Recurring Task</th>
+           </tr>
+         </thead>
+         <tbody>
+          <!-- table values -->
+         </tbody>
+     </table>
+      </div>
+  </body>
+</html>

@@ -1,0 +1,213 @@
+<style>
+.h-logo {
+  margin-top: 50px;
+
+}
+img{
+  padding: 5px;
+  height: 80px;
+  width: 250px;
+}
+.logo {
+  margin-left: 85px;
+  height: 120px;
+  width: 370px;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #e7e7e7;
+    background-color: #f3f3f3;
+}
+li {
+    float: left;
+}
+li a {
+    display: block;
+    color: #666;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #ddd;
+}
+.task {
+  display: block;
+  color: #666;
+  text-align: center;
+  font-family: 'Arial';
+  padding: 14px 16px;
+}
+
+.task {
+  display: block;
+  color: #666;
+  text-align: center;
+  font-family: 'Arial';
+  padding: 14px 16px;
+}
+
+th.name{
+  text-align: center;
+  margin-top: 5px;
+  width: 200px;
+}
+
+#myInput {
+  background-image: url('searchicon.png');
+  background-size: 35px;
+  background-position: 1px 8px;
+  background-repeat: no-repeat;
+  width: 30%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+.right-clock{
+  float: right;
+}
+.btnMain{
+    display: inline-block;
+    background-color: #ADD8E6;
+    margin-left: 15px;
+    margin-top: 6px;
+    padding: 10px 4px;
+    border-radius: 5px;
+}
+.btnMainCancel{
+    display: inline-block;
+    background-color: #ff6666;
+    margin-left: 15px;
+    margin-top: 6px;
+    padding: 10px 4px;
+    border-radius: 5px;
+}
+/* Full-width input fields */
+input[type=text], input[type=email] {
+    width: inherit;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+input[type="radio"],
+input[type="checkbox"] {
+  margin: 0 4px 8px 0;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+label.light {
+  font-weight: 300;
+  display: inline;
+}
+/* Set a style for all buttons */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 10px;
+    margin: 10px 0;
+    border: none;
+    cursor: pointer;
+    width: 80%;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+/* Extra styles for the cancel button */
+.cancelbtn {
+    padding: 14px 20px;
+    background-color: #f44336;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn,.signupbtn {
+  float:left;
+  text-align: center;
+  margin: 0 auto;
+  width:35%;
+}
+/* Add padding to container elements */
+.container {
+    padding: 16px;
+}
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 59%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)}
+    to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    .cancelbtn {
+       width: 100%;
+    }
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+    .cancelbtn, .signupbtn {
+       width: 100%;
+    }
+}
+</style>
