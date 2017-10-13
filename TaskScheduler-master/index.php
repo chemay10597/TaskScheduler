@@ -230,7 +230,7 @@
 
   <body>
     <div class="h-logo">
-        <img src="PNG/logo.png" alt="workhublogo">
+        <img src="PNG/logo1.png" alt="workhublogo">
         <img src="PNG/platformlogo.png" class="logo" alt="center">
       <div class="right-clock">
         <table class="a">
@@ -256,6 +256,8 @@
             <li class="task"><input type="checkbox" name="cod2"> <label>Weekly</label></li>
             <li class="task"><input type="checkbox" name="cod3"> <label>Monthly</label></li>
             <li class="task"><input type="checkbox" name="cod4"> <label>Customize</label></li>
+            <li class="task"><input type="checkbox" name="cod5"> <label>Assigned</label></li>
+            <li class="task"><input type="checkbox" name="cod6"> <label>Unassigned</label></li>
             <li class="task"><a href="#alerts">Reports <span class="badge">5</span></a></li>
             <li class="task"><a href="#calendar">Calendar</a></li>
           </ul>
@@ -605,10 +607,11 @@
             $task_status = $_POST['task_status'];
 
             //Execute the query
+            if($task_status=='assigned'){
             mysqli_query($connect, "INSERT INTO task (task_name,task_description,task_recursion,assign_to,assign_by,task_priority,task_status)
             				VALUES('$task_name','$task_description','$task_recursion','$assign_to','$assign_by','$task_priority','$task_status')");
-
-                    if($task_status=='unassigned'){
+            }
+                    else if($task_status=='unassigned'){
                       mysqli_query($connect, "INSERT INTO task (task_name,task_description,task_recursion,assign_by,task_priority,task_status)
                       				VALUES('$task_name','$task_description','$task_recursion','$assign_by','$task_priority','$task_status')");
                     }
@@ -782,7 +785,7 @@
           echo "Failed to connect to MySQL: " . mysqli_connect_error();
           }
 
-          $result = mysqli_query($connect,"SELECT * FROM task JOIN daily_task ON daily_task.task_id=task.task_id");
+          $result = mysqli_query($connect,"SELECT * FROM task JOIN daily_task WHERE task.task_recursion='daily'");
           echo "<div id='divuserview'>";
           echo "<table class='table2'>
           <thead>
@@ -841,7 +844,7 @@
             echo "Failed to connect to MySQL: " . mysqli_connect_error();
             }
 
-            $result = mysqli_query($connect,"SELECT * FROM task JOIN weekly_task ON weekly_task.task_id=task.task_id");
+            $result = mysqli_query($connect,"SELECT * FROM task JOIN weekly_task WHERE task.task_recursion='weekly'");
             echo "<div id='divuserview'>";
             echo "<table class='table2'>
             <thead>
@@ -900,7 +903,7 @@
               echo "Failed to connect to MySQL: " . mysqli_connect_error();
               }
 
-              $result = mysqli_query($connect,"SELECT * FROM task JOIN monthly_task ON monthly_task.task_id=task.task_id");
+              $result = mysqli_query($connect,"SELECT * FROM task JOIN monthly_task WHERE task.task_recursion='monthly'");
               echo "<div id='divuserview'>";
               echo "<table class='table2'>
               <thead>
@@ -959,7 +962,7 @@
                 echo "Failed to connect to MySQL: " . mysqli_connect_error();
                 }
 
-                $result = mysqli_query($connect,"SELECT * FROM task JOIN customize_task ON customize_task.task_id=task.task_id");
+                $result = mysqli_query($connect,"SELECT * FROM task JOIN customize_task WHERE task.task_recursion='customize'");
                 echo "<div id='divuserview'>";
                 echo "<table class='table2'>
                 <thead>
@@ -1006,6 +1009,107 @@
               }).change();
               </script>
 
+              <div id="assignedtype">
+                <h3>Assigned Tasks</h3>
+                  <?php
+                  $connect=mysqli_connect("localhost","root","","trax_task_scheduler_db");
+                  // Check connection
+                  if (mysqli_connect_errno())
+                  {
+                  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+                  }
+
+                  $result = mysqli_query($connect,"SELECT * FROM task WHERE task_status='assigned'");
+                  echo "<div id='divuserview'>";
+                  echo "<table class='table2'>
+                  <thead>
+                  <tr>
+                  <th>Task Name</th>
+                  <th>Task Description</th>
+                  <th>Task Recursion</th>
+                  <th>Assign To</th>
+                  <th>Assign By</th>
+                  <th>Level of Priority</th>
+                  <th>Task Status</th>
+                  </tr>
+                  </thead>";
+
+                  while($row = mysqli_fetch_array($result))
+                  {
+                  echo "<tbody>";
+                  echo "<tr class='tdstyle'>";
+                  echo "<td>" . $row['task_name'] . "</td>";
+                  echo "<td>" . $row['task_description'] . "</td>";
+                  echo "<td>" . $row['task_recursion'] . "</td>";
+                  echo "<td>" . $row['assign_to'] . "</td>";
+                  echo "<td>" . $row['assign_by'] . "</td>";
+                  echo "<td>" . $row['task_priority'] . "</td>";
+                  echo "<td>" . $row['task_status'] . "</td>";
+                  echo "</tr>";
+                  }
+                  echo "</tbody>";
+                  echo "</table>";
+                  echo "</div>";
+                  mysqli_close($connect);
+                  ?>
+                </div>
+
+                <script>
+                $('[name="cod5"]').on('change', function() {
+                $('#assignedtype').toggle(this.checked);
+                }).change();
+                </script>
+
+                <div id="unassignedtype">
+                  <h3>Unassigned Tasks</h3>
+                    <?php
+                    $connect=mysqli_connect("localhost","root","","trax_task_scheduler_db");
+                    // Check connection
+                    if (mysqli_connect_errno())
+                    {
+                    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+                    }
+
+                    $result = mysqli_query($connect,"SELECT * FROM task WHERE task_status='unassigned'");
+                    echo "<div id='divuserview'>";
+                    echo "<table class='table2'>
+                    <thead>
+                    <tr>
+                    <th>Task Name</th>
+                    <th>Task Description</th>
+                    <th>Task Recursion</th>
+                    <th>Assign To</th>
+                    <th>Assign By</th>
+                    <th>Level of Priority</th>
+                    <th>Task Status</th>
+                    </tr>
+                    </thead>";
+
+                    while($row = mysqli_fetch_array($result))
+                    {
+                    echo "<tbody>";
+                    echo "<tr class='tdstyle'>";
+                    echo "<td>" . $row['task_name'] . "</td>";
+                    echo "<td>" . $row['task_description'] . "</td>";
+                    echo "<td>" . $row['task_recursion'] . "</td>";
+                    echo "<td>" . $row['assign_to'] . "</td>";
+                    echo "<td>" . $row['assign_by'] . "</td>";
+                    echo "<td>" . $row['task_priority'] . "</td>";
+                    echo "<td>" . $row['task_status'] . "</td>";
+                    echo "</tr>";
+                    }
+                    echo "</tbody>";
+                    echo "</table>";
+                    echo "</div>";
+                    mysqli_close($connect);
+                    ?>
+                  </div>
+
+                  <script>
+                  $('[name="cod6"]').on('change', function() {
+                  $('#unassignedtype').toggle(this.checked);
+                  }).change();
+                  </script>
       </div>
   </body>
 </html>
