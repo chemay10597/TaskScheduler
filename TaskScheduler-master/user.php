@@ -65,6 +65,7 @@
           <li class="task"><input type="checkbox" name="cod4"> <label>Customize</label></li>
           <li class="task"><input type="checkbox" name="cod5"> <label>Assigned</label></li>
           <li class="task"><input type="checkbox" name="cod6"> <label>Unassigned</label></li>
+          <li class="task"><input type="checkbox" name="cod7"> <label>Done</label></li>
           <li class="task"><a href="#alerts">Reports <span class="badge">5</span></a></li>
           <li class="task"><a href="#calendar">Calendar</a></li>
         </ul>
@@ -115,9 +116,6 @@
     echo "<select name='task_status' id='task_status' value=''>";
     echo "<option value=''>" . 'Status..' . "</option>";
     echo "<option value='finished'>" . 'Finished' . "</option>";
-    echo "<option value='terminated'>" . 'Terminated' . "</option>";
-    echo "<option value='expired'>" . 'Expired' . "</option>";
-    echo "<option value='forwarded'>" . 'Forwarded' . "</option>";
     echo "<option value='failed'>" . 'Failed' . "</option>";
     echo "</select>";
     echo "</td>";
@@ -533,5 +531,56 @@
                   $('#unassignedtype').toggle(this.checked);
                   }).change();
                   </script>
+
+                  <div id="donetype">
+                    <h3>Done Tasks</h3>
+                      <?php
+                      $connect=mysqli_connect("localhost","root","","trax_task_scheduler_db");
+                      // Check connection
+                      if (mysqli_connect_errno())
+                      {
+                      echo "Failed to connect to MySQL: " . mysqli_connect_error();
+                      }
+
+                      $result = mysqli_query($connect,"SELECT * FROM task WHERE task_status='finished'");
+                      echo "<div id='divuserview'>";
+                      echo "<table class='table2'>
+                      <thead>
+                      <tr>
+                      <th>Task Name</th>
+                      <th>Task Description</th>
+                      <th>Task Recursion</th>
+                      <th>Assign To</th>
+                      <th>Assign By</th>
+                      <th>Level of Priority</th>
+                      <th>Task Status</th>
+                      </tr>
+                      </thead>";
+
+                      while($row = mysqli_fetch_array($result))
+                      {
+                      echo "<tbody>";
+                      echo "<tr class='tdstyle'>";
+                      echo "<td>" . $row['task_name'] . "</td>";
+                      echo "<td>" . $row['task_description'] . "</td>";
+                      echo "<td>" . $row['task_recursion'] . "</td>";
+                      echo "<td>" . $row['assign_to'] . "</td>";
+                      echo "<td>" . $row['assign_by'] . "</td>";
+                      echo "<td>" . $row['task_priority'] . "</td>";
+                      echo "<td>" . $row['task_status'] . "</td>";
+                      echo "</tr>";
+                      }
+                      echo "</tbody>";
+                      echo "</table>";
+                      echo "</div>";
+                      mysqli_close($connect);
+                      ?>
+                    </div>
+
+                    <script>
+                    $('[name="cod7"]').on('change', function() {
+                    $('#donetype').toggle(this.checked);
+                    }).change();
+                    </script>
   </body>
 </html>
