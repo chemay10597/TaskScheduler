@@ -101,7 +101,7 @@
     {
     echo "<tbody>";
     echo "<tr class='tdstyle'>";
-    echo "<td>";
+    echo "<td style='display:none;'>";
     echo "<input value='". $row['task_id'] ."' type='hidden' name='task_id' id='task_id'>";
     echo "</input>";
     echo "</td>";
