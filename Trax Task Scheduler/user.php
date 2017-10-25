@@ -35,6 +35,26 @@
           color: white;
       }
       </style>
+
+      <script type="text/javascript">
+            $(document).ready(function(){
+          $('#task_status').on('change', function() {
+
+            if ( this.value == 'assigned')
+            //.....................^.......
+            {;
+              $("#assign").show();
+            }
+
+            if ( this.value == 'unassigned')
+            //.....................^.......
+            {;
+              $("#assign").hide();
+            }
+
+          });
+      });
+      </script>
 </head>
 
 <body>
@@ -65,6 +85,7 @@
           <li class="task"><input type="checkbox" name="cod4"> <label>Customize</label></li>
           <li class="task"><input type="checkbox" name="cod5"> <label>Assigned</label></li>
           <li class="task"><input type="checkbox" name="cod6"> <label>Unassigned</label></li>
+          <li class="task"><input type="checkbox" name="cod7"> <label>Done</label></li>
           <li class="task"><a href="#alerts">Reports <span class="badge">5</span></a></li>
           <li class="task"><a href="#calendar">Calendar</a></li>
         </ul>
@@ -100,7 +121,7 @@
     {
     echo "<tbody>";
     echo "<tr class='tdstyle'>";
-    echo "<td>";
+    echo "<td style='display:none;'>";
     echo "<input value='". $row['task_id'] ."' type='hidden' name='task_id' id='task_id'>";
     echo "</input>";
     echo "</td>";
@@ -115,10 +136,9 @@
     echo "<select name='task_status' id='task_status' value=''>";
     echo "<option value=''>" . 'Status..' . "</option>";
     echo "<option value='finished'>" . 'Finished' . "</option>";
-    echo "<option value='terminated'>" . 'Terminated' . "</option>";
-    echo "<option value='expired'>" . 'Expired' . "</option>";
-    echo "<option value='forwarded'>" . 'Forwarded' . "</option>";
     echo "<option value='failed'>" . 'Failed' . "</option>";
+    echo "<option value='assigned'>" . 'Assigned' . "</option>";
+    echo "<option value='unassigned'>" . 'Unassigned' . "</option>";
     echo "</select>";
     echo "</td>";
     echo "<td>";
@@ -133,7 +153,29 @@
     mysqli_close($connect);
     ?>
   </div>
+  <div id="assign" style='display:none;'>
+  <!--//Assign To!!!-->
+  <label for="assign_to">Assign To: </label>
+  <?php
+  $connect=mysqli_connect("localhost","root","","trax_task_scheduler_db");
+  // Check connection
+  if (mysqli_connect_errno())
+  {
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+  }
 
+  $result = mysqli_query($connect,"SELECT user_id,user_name FROM user WHERE account_type='user'");
+
+  echo "<select name='assign_to' id='assign_to'>";
+  //echo "<option value=''>" . 'choose user' . "</option>";
+  while($row = mysqli_fetch_array($result))
+  {
+         echo "<option value='". $row['user_id'] ."'>" . $row['user_name'] . "</option>";
+  }
+  echo "</select>";
+  mysqli_close($connect);
+  ?>
+  </div>
   <script>
   $('[name="cod0"]').on('change', function() {
   $('#alltasktype').toggle(this.checked);
@@ -143,7 +185,7 @@
       <?php
       /* Attempt MySQL server connection. Assuming you are running MySQL
       server with default setting (user 'root' with no password) */
-      $link = mysqli_connect("localhost", "root", "", "trax_task_scheduler_db");
+      /*$link = mysqli_connect("localhost", "root", "", "trax_task_scheduler_db");
 
       // Check connection
       if($link === false){
@@ -163,7 +205,24 @@
       }
     }
       // Close connection
-      mysqli_close($link);
+      mysqli_close($link);*/
+      ?>
+
+      <?php
+
+      if(isset($_POST['submitupdate']))
+      {
+
+        $task_id = $row['task_id'];
+        $task_status = $row['task_status'];
+
+        mysqli_query($connect, "UPDATE task SET task_status = 'finished' WHERE task_id = 1");
+                if(mysqli_affected_rows($connect) > 0){
+                } else {
+                  echo mysqli_error ($connect);
+                }
+      }
+
       ?>
 
     <?php
@@ -533,5 +592,56 @@
                   $('#unassignedtype').toggle(this.checked);
                   }).change();
                   </script>
+
+                  <div id="donetype">
+                    <h3>Done Tasks</h3>
+                      <?php
+                      $connect=mysqli_connect("localhost","root","","trax_task_scheduler_db");
+                      // Check connection
+                      if (mysqli_connect_errno())
+                      {
+                      echo "Failed to connect to MySQL: " . mysqli_connect_error();
+                      }
+
+                      $result = mysqli_query($connect,"SELECT * FROM task WHERE task_status='finished'");
+                      echo "<div id='divuserview'>";
+                      echo "<table class='table2'>
+                      <thead>
+                      <tr>
+                      <th>Task Name</th>
+                      <th>Task Description</th>
+                      <th>Task Recursion</th>
+                      <th>Assign To</th>
+                      <th>Assign By</th>
+                      <th>Level of Priority</th>
+                      <th>Task Status</th>
+                      </tr>
+                      </thead>";
+
+                      while($row = mysqli_fetch_array($result))
+                      {
+                      echo "<tbody>";
+                      echo "<tr class='tdstyle'>";
+                      echo "<td>" . $row['task_name'] . "</td>";
+                      echo "<td>" . $row['task_description'] . "</td>";
+                      echo "<td>" . $row['task_recursion'] . "</td>";
+                      echo "<td>" . $row['assign_to'] . "</td>";
+                      echo "<td>" . $row['assign_by'] . "</td>";
+                      echo "<td>" . $row['task_priority'] . "</td>";
+                      echo "<td>" . $row['task_status'] . "</td>";
+                      echo "</tr>";
+                      }
+                      echo "</tbody>";
+                      echo "</table>";
+                      echo "</div>";
+                      mysqli_close($connect);
+                      ?>
+                    </div>
+
+                    <script>
+                    $('[name="cod7"]').on('change', function() {
+                    $('#donetype').toggle(this.checked);
+                    }).change();
+                    </script>
   </body>
 </html>
