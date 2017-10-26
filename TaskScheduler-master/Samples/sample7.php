@@ -44,13 +44,13 @@ $task_status = $row['task_status'];
 <td width="100"> </td>
 <td> </td>
 </tr>
+<?php } ?>
 <tr>
 <td width="100"> </td>
 <td>
 <input name="update" type="submit" id="update" value="Update">
 </td>
 </tr>
-<?php } ?>
 </table>
 </form>
 
@@ -64,7 +64,7 @@ if(isset($_POST['update']))
   $task_name = $row['task_name'];
   $task_status = $row['task_status'];
 
-  mysqli_query($connect, "UPDATE task SET task_name = '$task_name', task_status = '$task_status' WHERE task_name = '$task_name'");
+  mysqli_query($connect, "UPDATE task SET task_status = 'unassigned' WHERE task_name = 'qwert'");
           if(mysqli_affected_rows($connect) > 0){
           } else {
             echo mysqli_error ($connect);

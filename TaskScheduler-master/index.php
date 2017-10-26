@@ -274,20 +274,20 @@
          </div>
          <div class="container">
            <fieldset>
-             <label for="fname">First Name: </label>
+             <label for="first_name">First Name: </label>
              <input type="text" id="first_name" name="first_name" value="">
-             <label for="lname">Last Name: </label>
+             <label for="last_name">Last Name: </label>
              <input type="text" id="last_name" name="last_name"  onchange="doCombine();"  value="">
-             <label for="uname">Username: </label>
+             <label for="user_name">Username: </label>
              <input type="text" id="user_name" name="user_name" placeholder="firstname.lastname" value="">
              <label for="email">Email:</label>
              <input type="email" name="email" placeholder="user@domain.com" value="">
-             <label>Role: </label>
+             <label for="account_type">Role: </label>
              <select name="account_type" value="">
                  <option value="user">User</option>
                  <option value="admin">Admin</option>
              </select>
-           <label for="user_team">Team:</label>
+           <label for="team">Team:</label>
            <select name="team" value="">
                <option value="techsupport">Technical Support</option>
                <option value="platformops">Platform Ops</option>
@@ -360,11 +360,11 @@
               }
               mysqli_close($connect);
               ?>
-              <label for="name">Task Name: </label>
+              <label for="task_name">Task Name: </label>
               <input type="text" name="task_name" value="">
-              <label for="name">Task Description: </label>
+              <label for="task_description">Task Description: </label>
               <input type="text" name="task_description" value="">
-              <label for="name">Type of Task: </label>
+              <label for="task_recursion">Type of Task: </label>
               <select id="task_recursion" name="task_recursion">
                 <option value="daily">Daily</option>
                 <option value="weekly">Weekly</option>
@@ -374,7 +374,7 @@
 
               <!--display fields for daily-->
               <div id="day_task" style='display:none;'>
-                 <label for="name">Task Schedule: </label>
+                 <label for="day_task">Task Schedule: </label>
                  <span>
                  <input name="day[]" type="checkbox" value="Monday"/>Monday</input>
                  </span>
@@ -430,7 +430,7 @@
 
               <!--display fields for weekly-->
               <div id="week_task" style='display:none;'>
-                <label for="name">Task Schedule: </label>
+                <label for="week_task">Task Schedule: </label>
                 <span>
                 <input name="task_day" type="radio" value="Monday"/>Monday</input>
                 </span>
@@ -486,7 +486,7 @@
 
               <!--display fields for monthly-->
               <div id="mon_task" style='display:none;'>
-                  <label for="name">Task Schedule: </label>
+                  <label for="pickup_date">Task Schedule: </label>
                   <div id="pickup_date"><p><input type="date" class="textbox" id="date_ofthe_month" name="date_ofthe_month" onchange="cal()"/></p></div>
                   <!-- code to compute time for monthly task-->
                   <div>
@@ -529,7 +529,7 @@
                  <input id="task_duration" type="text" name="task_duration" onChange="changeDate()" />
                </div>
 
-               <label for="name">Task Current Status: </label>
+               <label for="task_status">Task Current Status: </label>
                <select class="input" id="task_status" name="task_status" value="">
                  <option value="unassigned">Unassigned</option>
                  <option value="assigned">Assigned</option>
@@ -537,7 +537,7 @@
 
                <div id="assign" style='display:none;'>
               <!--//Assign To!!!-->
-              <label for="name">Assign To: </label>
+              <label for="assign_to">Assign To: </label>
               <?php
               $connect=mysqli_connect("localhost","root","","trax_task_scheduler_db");
               // Check connection
@@ -559,7 +559,7 @@
               ?>
             </div>
               <!--//Assign By!!!-->
-              <label for="name">Assign By: </label>
+              <label for="assign_by">Assign By: </label>
               <?php
               $connect=mysqli_connect("localhost","root","","trax_task_scheduler_db");
               // Check connection
@@ -578,7 +578,7 @@
               mysqli_close($connect);
               ?>
 
-              <label for="name">Set Priority: </label>
+              <label for="task_priority">Set Priority: </label>
               <select class="input" id="task_priority" name="task_priority" value="">
                 <option value="high priority">High Priority</option>
                 <option value="medium priority">Medium Priority</option>
